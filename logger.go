@@ -10,6 +10,6 @@ func Error(data interface{}) {
 	fmt.Println("Log error", data)
 }
 
-func Warning(data interface{}) {
-	fmt.Println("Log warning", data)
+func Warning(message string, params interface{}) {
+	fmt.Println("Log warning", message, "params: ", params)
 }
