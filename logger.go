@@ -2,7 +2,7 @@ package logger
 
 import (
 	"fmt"
-	"os"
+	"io"
 	"time"
 )
 
@@ -10,8 +10,16 @@ type LogLevel string
 
 type Logger struct {
 	LogLevel   LogLevel
-	OutputDest *os.File
+	OutputDest io.Writer
 	ToConsole  bool
+}
+
+func NewLogger(logLevel LogLevel, outputDest io.Writer, toConsole bool) *Logger {
+	return &Logger{
+		LogLevel:   logLevel,
+		OutputDest: outputDest,
+		ToConsole:  toConsole,
+	}
 }
 
 func (l *Logger) log(level LogLevel, message string) {
